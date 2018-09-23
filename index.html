@@ -1,39 +1,104 @@
-<!DOCTYPE html>
+<!--
+  Copyright (c) 2018 ml5
+
+  This software is released under the MIT License.
+  https://opensource.org/licenses/MIT
+-->
+
 <html>
-  <head>
-    <head>
-      <title>Getting Started with ml5.js</title>
-      <script src="https://unpkg.com/ml5@0.1.1/dist/ml5.min.js"></script>
-    </head>
 
-  <body>
-    <h1>Image classification using MobileNet</h1>
-    <p>The MobileNet model labeled this as
-    <span id="result">...</span> with a confidence of
-    <span id="probability">...</span></p>
-    <img src="https://ml5js.org/docs/assets/img/bird.jpg"
-     crossorigin="anonymous" id="image" width="400">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Icon Designer</title>
 
-    <script>
-      // The image we want to classify
-      const image = document.getElementById('image');
-      // The result tag in the HTML
-      const result = document.getElementById('result');
-      // The probability tag in the HTML
-      const probability = document.getElementById('probability');
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/addons/p5.dom.min.js"></script>
+  <script src="https://unpkg.com/ml5@0.1.1/dist/ml5.min.js" type="text/javascript"></script>
 
-      // Initialize the Image Classifier method with MobileNet
-      const classifier = ml5.imageClassifier('MobileNet', function() {
-        console.log('Model Loaded!');
-      });
+  <style>
+    .border-box {
+      overflow: hidden;
+    border-radius: 25px;
+    }
 
-      // Make a prediction with the selected image
-      // This will return an array with a default of 10 options with their probabilities
-      classifier.predict(image, function(err, results) {
-        result.innerText = results[0].className;
-        probability.innerText = results[0].probability.toFixed(4);
-      });
+    .flex {
+      display: flex;
+    }
 
-    </script>
-  </body>
+    .flex-space-between {
+      justify-content: space-between;
+    }
+
+    .iphone-underlay {
+     background-repeat:  no-repeat;
+   
+    margin-left: 34px;
+    width: 320px;
+    height: 570px;
+    background-size: 100%;
+    background-image: url("images/iphone6.png");
+    position:absolute;top:10;left:0;right:0;bottom:0;filter: blur(1px);z-index:-1;
+    }
+
+    .sample{
+      position: relative;
+      top: 364px;
+    left: 267px;
+    width: 45px;
+    height: 45px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding;
+    background-clip: padding-box;
+
+
+    }
+
+    .btn{
+      width: 100px;
+      height: 30px;
+
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Experimental AI App Icon Designer</h1>
+  <p>1. Draw icon sketch on the canvas below.</p>
+  <p>2. Click 'Transfer' button.</p>
+  <p>3. A colored icon will appear in ~5s.</p>
+  <p>4. Click 'Clear' button to clear the canvas and draw again.</p>
+  <p id="status">Loading Model... Please wait...</p>
+  <div class="flex">
+  <div class="flex" style=" justify-content: space-between; width: 530px;">
+    <div>
+      <div id="canvasContainer" style="border-style: solid;"></div>
+      <div id="btnContainer" class="flex flex-space-between">
+        <button id="clearBtn">Clear</button><br>
+        <button id="transferBtn" class="btn">Colorize</button>
+      </div>
+    </div>
+    <div id="transferContainer">
+    </div>
+    <div id="output" ></div>
+  </div>
+  
+    
+      
+    
+    <div id="parent_div" style="position:relative;">
+      <div class="iphone-underlay"  ></div>
+    <div id="icon">
+      <img class="sample" src="images/appicon.png">
+    </div>
+    </div>
+  </div>
+
+ 
+
+  <script src="sketch.js"></script>
+</body>
+
 </html>
