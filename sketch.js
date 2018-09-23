@@ -3,18 +3,13 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-/* ===
-ml5 Example
-Pix2pix Edges2Pikachu example with p5.js using promises
-This uses a pre-trained model on Pikachu images
-For more models see: https://github.com/ml5js/ml5-data-and-training/tree/master/models/pix2pix
-=== */
-
-// The pre-trained Edges2Pikachu model is trained on 256x256 images
-// So the input images can only be 256x256 or 512x512, or multiple of 256
 const SIZE = 256;
 let inputImg, inputCanvas, outputContainer, statusMsg, transferBtn, clearBtn, appIcon;
 
+function imageClick(el){
+  //alert(el.src);
+    inputImg = loadImage(el.src, drawImage);
+  }
 function setup() {
   // Create a canvas
   inputCanvas = createCanvas(SIZE, SIZE);
@@ -56,7 +51,7 @@ function drawImage() {
   image(inputImg, 0, 0);
 
   // After input image is loaded, initialize a pix2pix method with a pre-trained model
-  ml5.pix2pix('models/iconmodel.bin')
+  ml5.pix2pix('models/checked3.bin')
     .then(model => {
       // Show 'Model Loaded!' message
       statusMsg.html('Model Loaded!');

@@ -57,28 +57,70 @@
     }
 
     .btn{
-      width: 100px;
-      height: 30px;
+      background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 
     }
+
+.image-table {
+ border: 0px solid rgba(0, 0, 0, 0);
+ border-collapse: separate;
+ border-spacing: 6px;
+ table-layout: fixed;
+ text-align: center;
+ width: 300px;
+}
+
+/* OPTIONAL - Bild mit Rahmen */
+.image-table img {
+ border: 3px solid #fff;
+ box-sizing: border-box;
+ -webkit-box-shadow: 0 0 5px #999;
+ box-shadow: 0 0 5px #999;
+ width: 75px;
+ height: 75px;
+}
+
+
   </style>
 </head>
 
 <body>
   <h1>Experimental AI App Icon Designer</h1>
   <p>1. Draw icon sketch on the canvas below.</p>
-  <p>2. Click 'Transfer' button.</p>
+  <p>2. Click 'Colorize' button.</p>
   <p>3. A colored icon will appear in ~5s.</p>
   <p>4. Click 'Clear' button to clear the canvas and draw again.</p>
   <p id="status">Loading Model... Please wait...</p>
   <div class="flex">
   <div class="flex" style=" justify-content: space-between; width: 530px;">
     <div>
-      <div id="canvasContainer" style="border-style: solid;"></div>
-      <div id="btnContainer" class="flex flex-space-between">
-        <button id="clearBtn">Clear</button><br>
+      <div id="canvasContainer" style="border-style: solid; width: 260px"></div>
+      <div id="btnContainer" class="flex flex-space-between" style="margin-top:10px">
+        <button id="clearBtn"class="btn" >Clear</button><br>
         <button id="transferBtn" class="btn">Colorize</button>
       </div>
+      <table class="image-table">
+        <tbody>
+         <tr>
+          <td>
+           <img class="table-image" src="images/input1.png" onclick="imageClick(this);">
+          </td>
+          <td>
+           <img class="table-image" src="images/input2.png" onclick="imageClick(this);">
+          </td>
+          <td>
+           <img class="table-image" src="images/input4.png" onclick="imageClick(this);">
+          </td>
+         </tr>
+        </tbody>
+       </table>
     </div>
     <div id="transferContainer">
     </div>
