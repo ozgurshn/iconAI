@@ -51,7 +51,7 @@ function drawImage() {
   image(inputImg, 0, 0);
 
   // After input image is loaded, initialize a pix2pix method with a pre-trained model
-  ml5.pix2pix('models/checked3.bin')
+  ml5.pix2pix('models/checked4.bin')
     .then(model => {
       // Show 'Model Loaded!' message
       statusMsg.html('Model Loaded!');
